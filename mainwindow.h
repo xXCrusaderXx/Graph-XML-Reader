@@ -19,13 +19,17 @@ public:
     ~MainWindow();
 
 private:
+
     Ui::MainWindow *ui;
     QString _fileName;
 
 private slots:
     void openFile();
     void readFile();
-    void selected();
+    //void selected();
+
+    void on_comboBox_vertexesCurrentIndexChanged(int index);
+
 };
 
 #endif // MAINWINDOW_H

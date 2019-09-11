@@ -9,10 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->button_openFile,SIGNAL(clicked()),this,SLOT(openFile()));
-    connect(ui->button_readFile,SIGNAL(clicked()),this,SLOT(readFile()));
+    QObject::connect(ui->button_openFile,SIGNAL(clicked()),this,SLOT(openFile()));
+    QObject::connect(ui->button_readFile,SIGNAL(clicked()),this,SLOT(readFile()));
+    QObject::connect(ui->comboBox_vertexes, SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_vertexesCurrentIndexChanged(int)));
 
-    //connect(ui->list_vertexes,SIGNAL(),this,SLOT(selected()));
 }
 
 MainWindow::~MainWindow()
@@ -77,7 +77,9 @@ void MainWindow::openFile()
                                             if(matchFound == false)
                                             {
                                             liste.push_back(vertexName);
-                                            ui->list_vertexes->addItem(vertexName);
+                                            ui->comboBox_vertexes->addItem(vertexName);
+                                            ui->comboBox_vertexes->setEnabled(true);
+                                            //ui->list_vertexes->addItem(vertexName);
                                             }
                                         }
                                         else
@@ -163,7 +165,8 @@ void MainWindow::readFile()
     repaint();
 }
 
-void MainWindow::selected()
+void MainWindow::on_comboBox_vertexesCurrentIndexChanged(int index)
 {
+    index = ui->comboBox_vertexes->currentIndex();
     ui->statusBar->showMessage("Funktioniert",5000);
 }

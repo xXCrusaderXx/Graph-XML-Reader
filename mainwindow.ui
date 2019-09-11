@@ -99,6 +99,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox_vertexes">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>120</y>
+      <width>115</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="minimumSize">
