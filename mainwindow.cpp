@@ -3,6 +3,7 @@
 #include <QtXml/QtXml>
 #include "QFileDialog"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->button_openFile,SIGNAL(clicked()),this,SLOT(openFile()));
     QObject::connect(ui->button_readFile,SIGNAL(clicked()),this,SLOT(readFile()));
     QObject::connect(ui->comboBox_vertexes, SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_vertexesCurrentIndexChanged(int)));
-
+    QObject::connect(ui->list_vertexes, SIGNAL(itemClicked(QListWidgetItem * item)),this, SLOT(on_list_vertexes_itemClicked(QListWidgetItem * item)));
 }
 
 MainWindow::~MainWindow()
@@ -168,5 +169,14 @@ void MainWindow::readFile()
 void MainWindow::on_comboBox_vertexesCurrentIndexChanged(int index)
 {
     index = ui->comboBox_vertexes->currentIndex();
+
+
+
     ui->statusBar->showMessage("Funktioniert",5000);
+}
+
+void MainWindow::on_list_vertexes_itemClicked(QListWidgetItem * item)
+{
+    auto text = item->text();
+    ui->statusBar->showMessage(text,5000);
 }

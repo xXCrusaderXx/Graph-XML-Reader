@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QtXml/QtXml>
 #include <QFile>
+#include "QListWidgetItem"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,7 @@ private slots:
     //void selected();
 
     void on_comboBox_vertexesCurrentIndexChanged(int index);
+    void on_list_vertexes_itemClicked(QListWidgetItem * item);
 
 };
 
